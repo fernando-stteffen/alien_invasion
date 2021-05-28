@@ -8,23 +8,18 @@ def run_game():
     
     pygame.init()
     
-    game_config = Configs()
+    game_configs = Configs()
     screen = pygame.display.set_mode(
-        (game_config.screen_width, game_config.screen_height)
+        (game_configs.screen_width, game_configs.screen_height)
     )
-    pygame.display.set_caption(game_config.get_game_name())
+    pygame.display.set_caption(game_configs.get_game_name())
     
     ship = Ship(screen)
     
     while True:
         
         game_functions.check_events()
-        
-        screen.fill(game_config.background_color)
-        ship.blitme()
-        pygame.display.flip()
-        
-
+        game_functions.update_screen(game_configs, screen, ship)
 
 
 
