@@ -5,14 +5,13 @@ from config import Configs
 from ship import Ship
 
 def run_game():
+        
+    configs = Configs()
     
     pygame.init()
+    pygame.display.set_caption(configs.get_game_name())
     
-    game_configs = Configs()
-    screen = pygame.display.set_mode(
-        (game_configs.screen_width, game_configs.screen_height)
-    )
-    pygame.display.set_caption(game_configs.get_game_name())
+    screen = pygame.display.set_mode(configs.get_display_size())
     
     ship = Ship(screen)
     

@@ -13,3 +13,6 @@ class Configs():
     def get_game_name(self):
         return self.game_name + " - v" + self.game_version 
         
+    
+    def get_display_size(self):
+        return ((self.screen_width, self.screen_height))
