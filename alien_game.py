@@ -1,5 +1,6 @@
-import sys
 import pygame
+import game_functions 
+
 from config import Configs
 from ship import Ship
 
@@ -17,9 +18,7 @@ def run_game():
     
     while True:
         
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
+        game_functions.check_events()
         
         screen.fill(game_config.background_color)
         ship.blitme()
