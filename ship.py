@@ -29,9 +29,8 @@ class Ship():
         sprite_size_y = int((sheet_height / sheet_lines) * sprite_scale)
       
         
-        
         # Load Sprite
-        sprite = self.sprite_sheet.image_at((self.sprites[2]), (255,0,255))
+        sprite = self.sprite_sheet.image_at((self.sprites[7]), (255,0,255))
         self.image = pygame.transform.scale(sprite, (sprite_size_x, sprite_size_y))
         
         self.rect = self.image.get_rect()

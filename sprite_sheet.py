@@ -70,7 +70,8 @@ class SpriteSheet(object):
                 
                 current_number_sprite += 1
                 current_sheet_column += 1
-
+                
+            current_sheet_column = 0
             current_sheet_line += 1
         
         
