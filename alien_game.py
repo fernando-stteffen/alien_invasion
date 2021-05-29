@@ -10,15 +10,18 @@ def run_game():
     
     pygame.init()
     pygame.display.set_caption(configs.get_game_name())
-    
     screen = pygame.display.set_mode(configs.get_display_size())
     
     ship = Ship(screen)
-    
+
     while True:
+
+        print(str(fps))
+        game_functions.check_events(ship)
         
-        game_functions.check_events()
-        game_functions.update_screen(game_configs, screen, ship)
+        ship.update()
+        
+        game_functions.update_screen(configs, screen, ship)
 
 
 
