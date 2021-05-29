@@ -10,6 +10,10 @@ class Configs():
         self.screen_height = 800
         self.background_color = (230, 230, 230)
         
+        
+        # Ship configs
+        self.ship_speed_factor = 1.5
+        
     def get_game_name(self):
         return self.game_name + " - v" + self.game_version 
         
