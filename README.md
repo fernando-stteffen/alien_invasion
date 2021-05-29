@@ -1,2 +1,3 @@
-# alien_invasion
-My version of game alien_invasion
+# Alien Invasion
+My Version of Alien Invasion created in
+"Python crash course" - ERIC MATTHES 
