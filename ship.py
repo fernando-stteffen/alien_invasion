@@ -4,9 +4,10 @@ from sprite_sheet import SpriteSheet
 class Ship():
     
     
-    def __init__(self, screen):
+    def __init__(self, ship_configs, screen):
         
         self.screen = screen
+        self.ship_configs = ship_configs
         
         
         # Load Sprite Sheet
@@ -39,19 +40,24 @@ class Ship():
         self.rect.centerx = self.screen_rect.centerx
         self.rect.bottom = self.screen_rect.bottom - 5
         
+        
+        # Store a decimal value for the ship's center.
+        self.center = float(self.rect.centerx)
+        
         # Ship flags
         self.moving_right = False
         self.moving_left = False
-        
         
     def update(self):
         """ Update Ship """
         
         if self.moving_right:
-            self.rect.centerx += 1
+            self.center += self.ship_configs.ship_speed_factor
         
         if self.moving_left:
-            self.rect.centerx -= 1
+            self.center -= self.ship_configs.ship_speed_factor
+            
+        self.rect.centerx = self.center
     
     def blitme(self):
         
