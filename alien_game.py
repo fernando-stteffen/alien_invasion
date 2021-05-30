@@ -20,16 +20,8 @@ def run_game():
     while True:
             
         game_functions.check_events(configs, screen, ship, bullets)
-        
         ship.update()
-        bullets.update()
-        
-        for bullet in bullets.copy():
-            if bullet.rect.bottom <= 0:
-                bullets.remove(bullet)
-        
-        print(len(bullets))
-        
+        game_functions.update_bullets(bullets)
         game_functions.update_screen(configs, screen, ship, bullets)
 
 
