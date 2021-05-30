@@ -3,8 +3,9 @@ import pygame
 from bullet import Bullet
 
 
-def key_event(configs, screen, event, ship, bullets):
     
+    
+def key_event(configs, screen, event, ship, bullets):
     keyboard_buttons = {
             pygame.K_SPACE: shot_fire,
             pygame.K_RIGHT: move_ship,
@@ -52,11 +53,11 @@ def check_events(configs, screen, ship, bullets):
             key_event(configs, screen, event, ship, bullets)
             
 
-def update_screen(game_configs, screen, ship, bullets):
+def update_screen(configs, screen, ship, bullets):
     """ Update sprites in the new screen """
     
     # Dawing
-    screen.fill(game_configs.background_color)
+    screen.fill(configs.background_color)
     for bullet in bullets.sprites():
         bullet.draw_bullet()
         
