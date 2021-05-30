@@ -51,10 +51,10 @@ class Ship():
         """ Update Ship """
         
         if self.moving_right and self.rect.right < self.screen_rect.right:
-            self.center += self.ship_configs.ship_speed_factor
+            self.center += self.ship_configs.ship_speed
         
         if self.moving_left and self.rect.left > 0:
-            self.center -= self.ship_configs.ship_speed_factor
+            self.center -= self.ship_configs.ship_speed
             
         self.rect.centerx = self.center
     
