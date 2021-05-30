@@ -18,7 +18,7 @@ def key_event(configs, screen, event, ship, bullets):
    
 
 def shot_fire(configs, screen, event, ship, bullets):
-    if event.type == pygame.KEYDOWN: 
+    if event.type == pygame.KEYDOWN and len(bullets) < configs.max_bullets: 
         new_bullet = Bullet(configs, screen, ship)
         bullets.add(new_bullet)
     
