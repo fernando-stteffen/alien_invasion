@@ -26,7 +26,7 @@ class Alien(Sprite):
                                                          sheet_columns,
                                                          sheet_lines)
        
-        sprite_scale = 2
+        sprite_scale = 4
         sprite_size_x = int((sheet_width / sheet_columns) * sprite_scale)
         sprite_size_y = int((sheet_height / sheet_lines) * sprite_scale)
       
