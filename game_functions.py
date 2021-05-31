@@ -79,7 +79,7 @@ def check_aliens_bottom(aliens, ship, bullets, stats):
         
 def ship_hited(ship, aliens, bullets, stats):
     """Descres life sigment"""
-    stats.ships_left -= 1
+    stats.ship_lifes -= 1
     
     if stats.ship_lifes > 0:
     # Clear Screen

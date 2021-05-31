@@ -8,4 +8,4 @@ class GameStats():
         
     
     def reset_stats(self):
-        self.ships_left = self.configs.ship_lifes
+        self.ship_lifes = self.configs.ship_lifes
