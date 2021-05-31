@@ -26,7 +26,7 @@ def run_game():
     
     # Set Configs
     game_functions.set_globals(configs, screen)
-    game_functions.create_fleet(aliens)
+    game_functions.create_fleet(aliens, ship.rect.height)
     
     while True:
         
