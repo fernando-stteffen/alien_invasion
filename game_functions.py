@@ -2,6 +2,7 @@ import sys
 import pygame
 from bullet import Bullet
 from alien import Alien
+from time import sleep
 
 
 game_configs = ()
@@ -42,6 +43,11 @@ def update_bullets(bullets, aliens, ship_height):
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
     
+    
+    check_bullet_colission(bullets,aliens, ship_height)
+    
+   
+def check_bullet_colission(bullets,aliens, ship_height):
     # Kill event        
     collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)
     
@@ -50,12 +56,35 @@ def update_bullets(bullets, aliens, ship_height):
         # Wining Level
         bullets.empty()
         create_fleet(aliens, ship_height)
-       
+
+    
+    
    
-def update_aliens(aliens):
+def update_aliens(aliens, ship, bullets, stats):
     
     check_fleet_edges(aliens)
     aliens.update()
+    
+    if pygame.sprite.spritecollideany(ship, aliens):
+       ship_hited(ship, aliens, bullets, stats)
+        
+        
+def ship_hited(ship, aliens, bullets, stats):
+    """Descres life sigment"""
+    stats.ships_left -= 1
+    
+    # Clear Screen
+    aliens.empty()
+    bullets.empty()
+    
+    create_fleet(aliens, ship.rect.height)
+    ship.center_ship()
+    
+    #pause
+    sleep(2)
+    
+    
+            
             
         
 def check_events(ship, bullets):
