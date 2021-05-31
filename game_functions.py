@@ -68,6 +68,14 @@ def update_aliens(aliens, ship, bullets, stats):
     if pygame.sprite.spritecollideany(ship, aliens):
        ship_hited(ship, aliens, bullets, stats)
         
+    check_aliens_bottom(aliens, ship, bullets, stats)
+        
+def check_aliens_bottom(aliens, ship, bullets, stats):
+    screen_rect = game_screen.get_rect()
+    for alien in aliens.sprites():
+        if alien.rect.bottom >= screen_rect.bottom:
+            ship_hited(ship, aliens, bullets, stats)
+            break
         
 def ship_hited(ship, aliens, bullets, stats):
     """Descres life sigment"""
