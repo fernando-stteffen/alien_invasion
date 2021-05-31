@@ -4,6 +4,7 @@ class GameStats():
     def __init__(self, game_configs):
         self.configs = game_configs
         self.reset_stats()
+        self.game_active = True
         
     
     def reset_stats(self):
