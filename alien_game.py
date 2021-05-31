@@ -4,6 +4,7 @@ import game_functions
 from pygame.sprite import Group
 from config import Configs
 from ship import Ship
+from game_stats import GameStats
 
 
 
@@ -28,6 +29,8 @@ def run_game():
     game_functions.set_globals(configs, screen)
     game_functions.create_fleet(aliens, ship.rect.height)
     
+    stats = GameStats(configs)
+    
     while True:
         
         #Listen
@@ -36,7 +39,7 @@ def run_game():
         # Upadating Elements
         ship.update()
         game_functions.update_bullets(bullets,aliens, ship.rect.height)
-        game_functions.update_aliens(aliens)
+        game_functions.update_aliens(aliens, ship, bullets, stats)
         game_functions.update_screen(ship, bullets, aliens)
 
 
