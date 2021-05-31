@@ -33,7 +33,7 @@ def update_screen(ship, bullets, aliens):
 
     
 
-def update_bullets(bullets, aliens):
+def update_bullets(bullets, aliens, ship_height):
     """Update position of bullets and ger rid of old bullets."""
     
     bullets.update()
@@ -41,9 +41,16 @@ def update_bullets(bullets, aliens):
     for bullet in bullets.copy():
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
-            
+    
+    # Kill event        
     collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)
-   
+    
+    
+    if len(aliens) == 0:
+        # Wining Level
+        bullets.empty()
+        create_fleet(aliens, ship_height)
+       
    
 def update_aliens(aliens):
     
