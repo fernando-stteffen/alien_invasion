@@ -101,19 +101,37 @@ def get_max_alien_x(alien_width):
     """Get numbers of alien fit in a row"""
     
     available_space_x = game_configs.screen_width - (2 * alien_width)
-    max_number_aliens_x = available_space_x / (2 * alien_width)
+    max_aliens_x = int(available_space_x / (2 * alien_width))
     
-    return int(max_number_aliens_x)
+    return max_aliens_x
+    
+def get_max_alien_y(alien_height, ship_height):
+    """Determine the numbers of aliens fit on Y"""
+    
+    available_space_y = (
+        game_configs.screen_height - (3 * alien_height) - ship_height
+    )
+    max_aliens_y = int(available_space_y / (2 * alien_height))
+    return max_aliens_y 
+    
+    
 
-def create_alien(aliens, alien_number):
+def create_alien(aliens, alien_number, alien_row):
     alien = Alien(game_configs, game_screen)
+    
     alien_width = alien.rect.width
+    alien_height = alien.rect.height
+    
     alien.x = alien_width + 2 * alien_width * alien_number
+    alien.y = alien_height + 2 * alien_height * alien_row
+    
     alien.rect.x = alien.x
+    alien.rect.y = alien.y
+    
     aliens.add(alien)
 
 
-def create_fleet(aliens):
+def create_fleet(aliens, ship_height):
     """Create Aliens Line"""
     
     # Create an alien and find the number of aliens in a row
@@ -121,10 +139,13 @@ def create_fleet(aliens):
     
     alien = Alien(game_configs, game_screen)
     alien_width = alien.rect.width
+    alien_height = alien.rect.height
     max_aliens_x = get_max_alien_x(alien_width)
+    max_aliens_y = get_max_alien_y(alien_height, ship_height)
     
-    for alien_number in range(max_aliens_x):
-        create_alien(aliens, alien_number)
+    for alien_row in range(max_aliens_y):
+        for alien_number in range(max_aliens_x):
+            create_alien(aliens, alien_number, alien_row)
     
     
     
