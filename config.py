@@ -3,7 +3,7 @@ class Configs():
     def __init__(self):
         # Game About:
         self.game_name = "Alien Invasion"
-        self.game_version = "0.0.4"
+        self.game_version = "0.0.5"
         
         # Screen Settings
         self.screen_width = 1200
