@@ -81,16 +81,19 @@ def ship_hited(ship, aliens, bullets, stats):
     """Descres life sigment"""
     stats.ships_left -= 1
     
+    if stats.ship_lifes > 0:
     # Clear Screen
-    aliens.empty()
-    bullets.empty()
+        aliens.empty()
+        bullets.empty()
+        
+        create_fleet(aliens, ship.rect.height)
+        ship.center_ship()
+        
+        #pause
+        sleep(2)
     
-    create_fleet(aliens, ship.rect.height)
-    ship.center_ship()
-    
-    #pause
-    sleep(2)
-    
+    else:
+        stats.game_active = False
     
             
             
