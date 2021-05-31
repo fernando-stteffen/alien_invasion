@@ -9,7 +9,7 @@ class Alien(Sprite):
         super().__init__()
         
         self.screen = screen
-        self.alien_configs = configs
+        self.configs = configs
         
         
         # Load Sprite Sheet
@@ -48,7 +48,23 @@ class Alien(Sprite):
         # Store alien's exact position.
         self.x = float(self.rect.x)
 
+    def update(self):
+        """Move alien right."""
+        self.x += (self.configs.aliens_speed * self.configs.aliens_direction)
+        self.rect.x = self.x
+        
     
+    def check_edges(self):
+        screen_rect = self.screen.get_rect()
+        
+        if self.rect.right >= screen_rect.right:
+            return True
+        
+        elif self.rect.left <= 0:
+            return True
+        
+        
+        
     def blitme(self):
         
         self.screen.blit(self.image, self.rect)

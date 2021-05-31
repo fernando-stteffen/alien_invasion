@@ -41,7 +41,11 @@ def update_bullets(bullets):
     for bullet in bullets.copy():
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
-            
+
+def update_aliens(aliens):
+    
+    check_fleet_edges(aliens)
+    aliens.update()
             
         
 def check_events(ship, bullets):
@@ -147,6 +151,24 @@ def create_fleet(aliens, ship_height):
         for alien_number in range(max_aliens_x):
             create_alien(aliens, alien_number, alien_row)
     
+    
+def check_fleet_edges(aliens):
+    """Respond appropriately if any aliens have reached an edge"""
+    
+    for alien in aliens.sprites():
+        if alien.check_edges():
+            change_fleet_direction(aliens)
+            break
+            
+
+def change_fleet_direction(aliens):
+    """ Drop all fleet and change direction"""
+    for alien in aliens.sprites():
+        alien.rect.y += game_configs.aliens_drop_speed
+    game_configs.aliens_direction *= -1
+
+
+
     
     
     

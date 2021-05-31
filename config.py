@@ -22,6 +22,13 @@ class Configs():
         self.max_bullets = 3
         
         
+        # Alien configs
+        self.aliens_speed = 1
+        self.aliens_drop_speed = 10
+        # Direction 1 = right, -1 = left
+        self.aliens_direction = 0.5
+        
+        
         
     def get_game_name(self):
         return self.game_name + " - v" + self.game_version 

@@ -36,6 +36,7 @@ def run_game():
         # Upadating Elements
         ship.update()
         game_functions.update_bullets(bullets)
+        game_functions.update_aliens(aliens)
         game_functions.update_screen(ship, bullets, aliens)
 
 
