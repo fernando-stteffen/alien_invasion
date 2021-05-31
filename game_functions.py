@@ -96,6 +96,23 @@ def move_ship(event, ship, bullets):
         else:
             ship.moving_left = False
 
+
+def get_max_alien_x(alien_width):
+    """Get numbers of alien fit in a row"""
+    
+    available_space_x = game_configs.screen_width - (2 * alien_width)
+    max_number_aliens_x = available_space_x / (2 * alien_width)
+    
+    return int(max_number_aliens_x)
+
+def create_alien(aliens, alien_number):
+    alien = Alien(game_configs, game_screen)
+    alien_width = alien.rect.width
+    alien.x = alien_width + 2 * alien_width * alien_number
+    alien.rect.x = alien.x
+    aliens.add(alien)
+
+
 def create_fleet(aliens):
     """Create Aliens Line"""
     
@@ -104,14 +121,10 @@ def create_fleet(aliens):
     
     alien = Alien(game_configs, game_screen)
     alien_width = alien.rect.width
-    available_space_x = game_configs.screen_width - (2 * alien_width)
-    number_aliens_x = available_space_x / (2 * alien_width)
+    max_aliens_x = get_max_alien_x(alien_width)
     
-    for alien_number in range(int(number_aliens_x)):
-        alien = Alien(game_configs, game_screen)
-        alien.x = alien_width + 2 * alien_width * alien_number
-        alien.rect.x = alien.x
-        aliens.add(alien)
+    for alien_number in range(max_aliens_x):
+        create_alien(aliens, alien_number)
     
     
     
