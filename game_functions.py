@@ -40,7 +40,7 @@ def update_screen(ship, bullets, aliens, play_button, stats, scoreboard):
 
     
 
-def update_bullets(bullets, aliens, ship_height):
+def update_bullets(bullets, aliens, ship_height, stats, scoreboard):
     """Update position of bullets and ger rid of old bullets."""
     
     bullets.update()
@@ -50,13 +50,19 @@ def update_bullets(bullets, aliens, ship_height):
             bullets.remove(bullet)
     
     
-    check_bullet_colission(bullets,aliens, ship_height)
+    check_bullet_colission(bullets,aliens, ship_height, stats, scoreboard)
     
    
-def check_bullet_colission(bullets,aliens, ship_height):
+def check_bullet_colission(bullets,aliens, ship_height, stats, scoreboard):
     # Kill event        
     collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)
     
+    
+    if collisions:
+        for aliens in collisions.values():
+            stats.score += game_configs.alien_points * len(aliens)
+            scoreboard.prepare_score()
+            check_high_score(stats, scoreboard)
     
     if len(aliens) == 0:
         # Wining Level
@@ -255,6 +261,12 @@ def change_fleet_direction(aliens):
         alien.rect.y += game_configs.aliens_drop_speed
     game_configs.aliens_direction *= -1
 
+
+def check_high_score(stats, scoreboard):
+    """Check to see if there's a new high score."""
+    if stats.score > stats.high_score:
+        stats.high_score = stats.score
+        scoreboard.prepare_high_score()
 
 
     
