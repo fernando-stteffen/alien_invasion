@@ -103,7 +103,7 @@ def ship_hited(ship, aliens, bullets, stats):
             
             
         
-def check_events(ship, bullets, play_button, stats):
+def check_events(ship, bullets, play_button, stats, aliens):
     """ Listen events """
     for event in pygame.event.get():
          
@@ -118,11 +118,28 @@ def check_events(ship, bullets, play_button, stats):
         # Mouse
         elif event.type == pygame.MOUSEBUTTONDOWN:
             mouse_x, mouse_y = pygame.mouse.get_pos()
-            check_play_button(stats, play_button, mouse_x, mouse_y)
+            check_play_button(
+                stats, play_button, mouse_x, mouse_y, ship, aliens, bullets
+            )
 
-def check_play_button(stats, play_button, mouse_x, mouse_y):
+
+def check_play_button(stats, play_button, mouse_x, mouse_y, 
+                      ship, aliens, bullets):
     if play_button.rect.collidepoint(mouse_x, mouse_y):
+        # Reset the game
+        stats.reset_stats()
         stats.game_active = True
+        
+        # Empty the list of aliens and bullets
+        aliens.empty()
+        bullets.empty()
+        
+        # Create a new row and center ship
+        create_fleet(aliens, ship.rect.height)
+        ship.center_ship()
+        
+        
+
 
 def key_event(event, ship, bullets):
     keyboard_buttons = {
