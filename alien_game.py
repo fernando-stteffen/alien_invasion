@@ -37,11 +37,11 @@ def run_game():
         game_functions.check_events(ship, bullets)
         
         # Upadating Elements
-        ship.update()
-        
         if stats.game_active:
+            ship.update()
             game_functions.update_bullets(bullets,aliens, ship.rect.height)
             game_functions.update_aliens(aliens, ship, bullets, stats)
+        
         game_functions.update_screen(ship, bullets, aliens)
 
 

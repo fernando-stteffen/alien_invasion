@@ -3,7 +3,7 @@ class Configs():
     def __init__(self):
         # Game About:
         self.game_name = "Alien Invasion"
-        self.game_version = "0.0.7"
+        self.game_version = "0.0.8"
         
         # Screen Settings
         self.screen_width = 1200
@@ -24,7 +24,7 @@ class Configs():
         
         
         # Alien configs
-        self.aliens_speed = 3
+        self.aliens_speed = 1
         self.aliens_drop_speed = 10
         # Direction 1 = right, -1 = left
         self.aliens_direction = 0.5
