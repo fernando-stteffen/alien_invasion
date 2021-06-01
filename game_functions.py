@@ -16,7 +16,7 @@ def set_globals(configs, screen):
             
 
         
-def update_screen(ship, bullets, aliens):
+def update_screen(ship, bullets, aliens, play_button, stats):
     """ Update sprites in the new screen """
     
     # Dawing
@@ -28,7 +28,12 @@ def update_screen(ship, bullets, aliens):
     ship.blitme()
     
     aliens.draw(game_screen)
-
+  
+    if not stats.game_active:
+          game_screen.fill(game_configs.background_color)
+          play_button.draw_button()
+    
+    
     # Refresh Screen
     pygame.display.flip()  
 
