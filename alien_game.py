@@ -6,6 +6,7 @@ from config import Configs
 from ship import Ship
 from game_stats import GameStats
 from button import Button
+from scoreboard import Scoreboard
 
 
 
@@ -31,6 +32,7 @@ def run_game():
     game_functions.create_fleet(aliens, ship.rect.height)
     
     stats = GameStats(configs)
+    scoreboard = Scoreboard(configs, screen, stats)
     
     # Play Button
     
@@ -47,7 +49,9 @@ def run_game():
             game_functions.update_bullets(bullets,aliens, ship.rect.height)
             game_functions.update_aliens(aliens, ship, bullets, stats)
         
-        game_functions.update_screen(ship, bullets, aliens, play_button, stats)
+        game_functions.update_screen(
+            ship, bullets, aliens, play_button, stats, scoreboard
+        )
 
 
 

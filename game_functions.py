@@ -16,7 +16,7 @@ def set_globals(configs, screen):
             
 
         
-def update_screen(ship, bullets, aliens, play_button, stats):
+def update_screen(ship, bullets, aliens, play_button, stats, scoreboard):
     """ Update sprites in the new screen """
     
     # Dawing
@@ -28,6 +28,7 @@ def update_screen(ship, bullets, aliens, play_button, stats):
     ship.blitme()
     
     aliens.draw(game_screen)
+    scoreboard.score_draw()
   
     if not stats.game_active:
           game_screen.fill(game_configs.background_color)
@@ -60,6 +61,7 @@ def check_bullet_colission(bullets,aliens, ship_height):
     if len(aliens) == 0:
         # Wining Level
         bullets.empty()
+        game_configs.level_up()
         create_fleet(aliens, ship_height)
 
     
@@ -128,6 +130,8 @@ def check_play_button(stats, play_button, mouse_x, mouse_y,
                       ship, aliens, bullets):
     clicked = play_button.rect.collidepoint(mouse_x, mouse_y)
     if clicked and not stats.game_active:
+        # Reset game
+        game_configs.initialize_dynamic_configs()
         # Hide the mouse cursor.
         pygame.mouse.set_visible(False)
         
