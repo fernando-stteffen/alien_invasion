@@ -39,7 +39,7 @@ def run_game():
     while True:
         
         #Listen
-        game_functions.check_events(ship, bullets)
+        game_functions.check_events(ship, bullets, play_button, stats)
         
         # Upadating Elements
         if stats.game_active:
