@@ -75,24 +75,24 @@ def check_bullet_colission(bullets,aliens, ship_height, stats, scoreboard):
     
     
    
-def update_aliens(aliens, ship, bullets, stats):
+def update_aliens(aliens, ship, bullets, stats, scoreboard):
     
     check_fleet_edges(aliens)
     aliens.update()
     
     if pygame.sprite.spritecollideany(ship, aliens):
-       ship_hited(ship, aliens, bullets, stats)
+       ship_hited(ship, aliens, bullets, stats, scoreboard)
         
-    check_aliens_bottom(aliens, ship, bullets, stats)
+    check_aliens_bottom(aliens, ship, bullets, stats, scoreboard)
         
-def check_aliens_bottom(aliens, ship, bullets, stats):
+def check_aliens_bottom(aliens, ship, bullets, stats, scoreboard):
     screen_rect = game_screen.get_rect()
     for alien in aliens.sprites():
         if alien.rect.bottom >= screen_rect.bottom:
-            ship_hited(ship, aliens, bullets, stats)
+            ship_hited(ship, aliens, bullets, stats, scoreboard)
             break
         
-def ship_hited(ship, aliens, bullets, stats):
+def ship_hited(ship, aliens, bullets, stats, scoreboard):
     """Descres life sigment"""
     stats.ship_lifes -= 1
     
@@ -103,6 +103,10 @@ def ship_hited(ship, aliens, bullets, stats):
         
         create_fleet(aliens, ship.rect.height)
         ship.center_ship()
+        
+        
+        # Update Scoreboard.
+        scoreboard.prepare_ships()
         
         #pause
         sleep(2)
@@ -150,6 +154,7 @@ def check_play_button(stats, play_button, mouse_x, mouse_y,
         score_board.prepare_score()
         score_board.prepare_high_score()
         score_board.prepare_level()
+        score_board.prepare_ships()
         
         
         # Empty the list of aliens and bullets
