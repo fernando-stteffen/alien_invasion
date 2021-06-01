@@ -125,7 +125,8 @@ def check_events(ship, bullets, play_button, stats, aliens):
 
 def check_play_button(stats, play_button, mouse_x, mouse_y, 
                       ship, aliens, bullets):
-    if play_button.rect.collidepoint(mouse_x, mouse_y):
+    clicked = play_button.rect.collidepoint(mouse_x, mouse_y)
+    if clicked and not stats.game_active:
         # Reset the game
         stats.reset_stats()
         stats.game_active = True
