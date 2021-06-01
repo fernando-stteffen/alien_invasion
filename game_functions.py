@@ -68,6 +68,8 @@ def check_bullet_colission(bullets,aliens, ship_height, stats, scoreboard):
         # Wining Level
         bullets.empty()
         game_configs.level_up()
+        stats.level += 1
+        scoreboard.prepare_level()
         create_fleet(aliens, ship_height)
 
     
@@ -146,6 +148,8 @@ def check_play_button(stats, play_button, mouse_x, mouse_y,
         stats.reset_stats()
         stats.game_active = True
         score_board.prepare_score()
+        score_board.prepare_high_score()
+        score_board.prepare_level()
         
         
         # Empty the list of aliens and bullets
