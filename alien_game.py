@@ -41,7 +41,8 @@ def run_game():
     while True:
         
         #Listen
-        game_functions.check_events(ship, bullets, play_button, stats, aliens)
+        game_functions.check_events(ship, bullets, play_button, stats, aliens,
+        scoreboard)
         
         # Upadating Elements
         if stats.game_active:
