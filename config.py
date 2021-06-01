@@ -15,7 +15,7 @@ class Configs():
         self.ship_lifes = 3
         
         # Bullet configs
-        self.bullet_width = 300
+        self.bullet_width = 3
         self.bullet_height = 15
         self.bullet_color = 60, 60, 60
         self.max_bullets = 3
@@ -34,7 +34,7 @@ class Configs():
     def initialize_dynamic_configs(self):
         """ Change when level up """
         self.ship_speed = 1.5
-        self.aliens_speed = 1
+        self.aliens_speed = 0.5
         self.bullet_speed = 3
         # Direction 1 = right, -1 = left
         self.aliens_direction = 1
