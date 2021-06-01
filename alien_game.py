@@ -5,6 +5,7 @@ from pygame.sprite import Group
 from config import Configs
 from ship import Ship
 from game_stats import GameStats
+from button import Button
 
 
 
@@ -31,6 +32,10 @@ def run_game():
     
     stats = GameStats(configs)
     
+    # Play Button
+    
+    play_button = Button(configs, screen, "Play")
+    
     while True:
         
         #Listen
@@ -42,7 +47,7 @@ def run_game():
             game_functions.update_bullets(bullets,aliens, ship.rect.height)
             game_functions.update_aliens(aliens, ship, bullets, stats)
         
-        game_functions.update_screen(ship, bullets, aliens)
+        game_functions.update_screen(ship, bullets, aliens, play_button, stats)
 
 
 
